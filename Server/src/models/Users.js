@@ -10,6 +10,9 @@ module.exports = (sequelize) => {
             type : DataTypes.STRING,
             unique: true
         },
+        Location : {
+            type : DataTypes.STRING
+        },
         Password : {
             type : DataTypes.STRING
         }  

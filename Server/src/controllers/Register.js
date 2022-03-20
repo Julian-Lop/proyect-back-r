@@ -10,13 +10,14 @@ const validPassword = async (Password,user) => {
 
 
 exports.register = async (req,res)=>{
-    const {Username,Email,Password} = req.body
+    const {Username,Email,Password,Location} = req.body
     try {
         if(Username && Email && Password){
             let user = await Users.create({
                 Username,
                 Email,
-                Password
+                Password,
+                Location
             })
             if(user){
                return res.status(201).json({message: 'register success', created:true})
@@ -66,7 +67,7 @@ exports.quote = async(req,res) => {
             where:{
                 Email:email
             },
-            attributes : ['id','Username','Email']
+            attributes : ['id','Username','Email','Location']
         })
         return res.status(200).json({status: 'ok', quote: user})
     } catch (error) {
